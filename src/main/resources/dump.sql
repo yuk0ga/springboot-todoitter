@@ -1,3 +1,4 @@
+# mysql
 CREATE DATABASE IF NOT EXISTS todoitter;
 USE todoitter;
 
@@ -8,3 +9,13 @@ create table todo(
     done bit null
 );
 
+# postgresql
+# $ createdb 'todoitter'
+# $ psql 'todoitter'
+
+create table todo(
+  id serial primary key,
+  content varchar(255) null,
+  due_date date null,
+  done BOOLEAN null
+);

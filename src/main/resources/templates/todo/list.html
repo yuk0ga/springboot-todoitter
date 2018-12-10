@@ -2,20 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Todoitter</title>
+    <title>Todo | Todoitter</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
 
-<h2 class="container">Todoitter</h2>
+<h2 class="container"><a th:href="@{/}">Todoitter</a></h2>
 
 <div class="container">
-    <table class="table">
+    <table class="table table-hover">
         <tbody>
         <tr th:each="todo : ${todos}">
             <td th:text="${todo.content}">Todoが入ります</td>
             <td th:text="${todo.dueDate}">DueDateが入ります</td>
-            <td><a th:href="@{/{category_id}/{id}(category_id=${todo.category.getId()}, id=${todo.id},_method=delete)}"><button type="button" class="btn btn-danger">delete</button></a></td>
+            <td><a th:href="@{/{category_id}/{id}(category_id=${todo.category.getId()}, id=${todo.id},_method=delete)}"><button type="button" class="btn btn-danger deleteBtn">delete</button></a></td>
         </tr>
         </tbody>
     </table>

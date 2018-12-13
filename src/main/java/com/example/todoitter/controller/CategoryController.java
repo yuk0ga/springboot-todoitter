@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/categories")
 public class CategoryController {
 
     @Autowired
@@ -37,7 +37,7 @@ public class CategoryController {
                     Model model) {
         categoryService.save(category);
 
-        return "redirect:/";
+        return "redirect:/categories";
     }
 
     @GetMapping("{id}/delete")
@@ -48,6 +48,6 @@ public class CategoryController {
         }
         Category category = categoryService.findOneById(id);
         categoryService.delete(category);
-        return "redirect:/";
+        return "redirect:/categories";
     }
 }

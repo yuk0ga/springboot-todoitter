@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.nio.file.Path;
 
 @Controller
-@RequestMapping("/{category_id}")
+@RequestMapping("/categories/{category_id}/todos")
 public class TodoController {
 
     @Autowired
@@ -45,7 +45,7 @@ public class TodoController {
         todo.setCategory(categoryService.findOneById(category_id));
         todoService.save(todo);
 
-        return "redirect:/" + category_id;
+        return "redirect:/categories/" + category_id + "/todos";
     }
 
     @GetMapping("/{id}")
@@ -54,6 +54,6 @@ public class TodoController {
             @PathVariable int category_id) {
         Todo todo = todoService.findOneById(id);
         todoService.delete(todo);
-        return "redirect:/" + category_id;
+        return "redirect:/categories/" + category_id + "/todos";
     }
 }

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Categories | Todoitter</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" media="all" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" /></head>
 <body>
 
 <h2 class="container"><a th:href="@{/}">Todoitter</a></h2>
@@ -14,21 +14,36 @@
         <tbody>
         <tr th:each="category : ${categories}">
             <td th:text="${category.name}">カテゴリー名</td>
-            <td><a th:href="@{'/' + ${category.id}}"><button type="button" class="btn btn-warning">Go</button></a></td>
-            <td><a th:href="@{/{id}/delete(id=${category.id},_method=delete)}"><button type="button" class="btn btn-danger deleteBtn">delete</button></a></td>
+            <td><a th:href="@{'/categories/' + ${category.id} + '/todos'}"><button type="button" class="btn btn-warning">Go</button></a></td>
+            <td><a th:href="@{/categories/{id}/delete(id=${category.id},_method=delete)}"><button type="button" class="btn btn-danger deleteBtn">delete</button></a></td>
         </tr>
         </tbody>
     </table>
 </div>
 
 <div class="container">
-    <form method="post" class="form-inline" th:action="@{/}" th:object="${category}">
+    <form method="post" class="form-inline" th:action="@{/categories/}" th:object="${category}">
         <input type="text" class="form-control" placeholder="Category" th:field="*{name}"/>
         <button type="submit" class="btn btn-primary">Add</button>
         <ul th:if="${#fields.hasErrors('*')}">
             <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
         </ul>
     </form>
+</div>
+
+<br>
+
+<div class="panel-wrapper col-md-6 col-md-offset-3">
+    <div class="panel panel-default" th:each="category:${categories}">
+        <div class="panel-heading">
+            <h5 th:text="${category.name}"></h5>
+        </div>
+        <div class="panel-body">
+            <div class="list-group" th:each="todo:${category.todos}">
+                <a class="list-group-item" th:text="${todo.content}"></a>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>

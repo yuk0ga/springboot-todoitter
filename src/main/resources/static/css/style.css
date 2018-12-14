@@ -1,3 +1,7 @@
-.deleteBtn {
+.deleteBtn #logout-btn {
     float: right;
+}
+
+#todoitter-title #logout-btn {
+    display: inline;
 }

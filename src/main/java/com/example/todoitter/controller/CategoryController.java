@@ -1,10 +1,12 @@
 package com.example.todoitter.controller;
 
+import com.example.todoitter.entity.Member;
 import com.example.todoitter.entity.Todo;
 import com.example.todoitter.service.CategoryService;
 import com.example.todoitter.entity.Category;
 import com.example.todoitter.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,15 +28,19 @@ public class CategoryController {
     @GetMapping
     public String listCategories(
             @ModelAttribute Category category,
+            @AuthenticationPrincipal Member member,
             Model model) {
-        model.addAttribute("categories", categoryService.findAll()); // pass attribute to view
+        model.addAttribute("categories", categoryService.findAllByMemberId(member.getId())); // pass attribute to view
         return "category/list";
     }
 
     @PostMapping
-    String postCategory(@ModelAttribute @Validated Category category,
-                    BindingResult result,
-                    Model model) {
+    String postCategory(
+            @ModelAttribute @Validated Category category,
+            @AuthenticationPrincipal Member member,
+            BindingResult result,
+            Model model) {
+        category.setMember(member);
         categoryService.save(category);
 
         return "redirect:/categories";

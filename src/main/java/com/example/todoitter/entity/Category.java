@@ -13,9 +13,9 @@ public class Category {
     @GeneratedValue
     private int id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @OneToMany(mappedBy = "category")
     private List<Todo> todos;

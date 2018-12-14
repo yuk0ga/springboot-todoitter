@@ -1,7 +1,6 @@
 package com.example.todoitter.repository;
 
 import com.example.todoitter.entity.Category;
-import com.example.todoitter.entity.Member;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

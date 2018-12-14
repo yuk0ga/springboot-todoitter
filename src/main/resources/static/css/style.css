@@ -9,3 +9,33 @@
 .top-bar {
     margin: 20px auto;
 }
+
+.body-signup {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+}
+
+.form-signup {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto !important;
+    padding: 10px !important;
+    font-size: 16px !important
+}
+
+.form-signup-heading {
+    margin-top: 0;
+}
+
+.btn-signup {
+    color: #fff;
+    background-color: #1fa0bf;
+    border-color: #1fa0bf;
+}

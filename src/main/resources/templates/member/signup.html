@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sign up | Todoitter</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" media="all" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+</head>
+<body class="body-signup">
+<div class="container">
+    <form class="form-signup" method="post" th:action="@{/signup}" action="/signup" th:object="${memberSignupForm}">
+        <h2 class="form-signup-heading">Sign up</h2>
+        <p>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" th:field="*{username}" class="form-control" placeholder="Username" required autofocus>
+        </p>
+        <p>
+            <label for="email" class="sr-only">Email</label>
+            <input type="email" id="email" name="email" th:field="*{email}" class="form-control" placeholder="Email" required autofocus>
+        </p>
+        <p>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" th:field="*{password}" class="form-control" placeholder="Password" required>
+        </p>
+        <ul th:if="${#fields.hasErrors('*')}">
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is invalid</li>
+        </ul>
+        <input name="_csrf" type="hidden" value="722966f3-06ca-407a-95d2-fe74147aa1c6" />
+        <button class="btn btn-lg btn-block btn-signup" type="submit">Sign up</button>
+    </form>
+</div>
+</body>
+</html>

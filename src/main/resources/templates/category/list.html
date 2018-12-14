@@ -9,7 +9,10 @@
 
 <div class="top-bar container">
     <h2 id="todoitter-title"><a th:href="@{/}">Todoitter</a></h2>
-    <a id="logout-btn" th:href="@{/logout}"><button type="button" class="btn btn-danger">Logout</button></a>
+    <ul class="top-menu">
+        <li id="welcome-msg">Welcome, <span th:text="${member.username}">Member!</span></li>
+        <li><a id="logout-btn" th:href="@{/logout}">Logout</a></li>
+    </ul>
 </div>
 
 <div class="container">

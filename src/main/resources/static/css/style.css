@@ -1,9 +1,14 @@
-.deleteBtn, #logout-btn {
+.deleteBtn, .top-menu {
     float: right;
 }
 
-#todoitter-title, #logout-btn {
+#todoitter-title, .top-menu {
     display: inline !important;
+}
+
+.top-menu > li {
+    display: inline;
+    text-decoration: none;
 }
 
 .top-bar {

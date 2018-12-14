@@ -30,6 +30,7 @@ public class TodoController {
             @AuthenticationPrincipal Member member,
             Model model,
             @PathVariable int category_id) {
+        model.addAttribute("member", member);
         model.addAttribute("todos", todoService.findAllByCategoryId(category_id)); // pass attribute to view
         return "todo/list";
     }

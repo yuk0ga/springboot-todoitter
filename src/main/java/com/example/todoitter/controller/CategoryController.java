@@ -30,6 +30,7 @@ public class CategoryController {
             @ModelAttribute Category category,
             @AuthenticationPrincipal Member member,
             Model model) {
+        model.addAttribute("member", member);
         model.addAttribute("categories", categoryService.findAllByMemberId(member.getId())); // pass attribute to view
         return "category/list";
     }

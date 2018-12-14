@@ -1,7 +1,11 @@
-.deleteBtn #logout-btn {
+.deleteBtn, #logout-btn {
     float: right;
 }
 
-#todoitter-title #logout-btn {
-    display: inline;
+#todoitter-title, #logout-btn {
+    display: inline !important;
+}
+
+.top-bar {
+    margin: 20px auto;
 }

@@ -44,3 +44,8 @@
     background-color: #1fa0bf;
     border-color: #1fa0bf;
 }
+
+#signup-link {
+    text-align: center;
+    margin: 7px;
+}

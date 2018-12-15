@@ -11,4 +11,7 @@ public class BaseController {
     public String redirect() {
         return "redirect:/categories";
     }
+
+    @GetMapping("login")
+    public String login() { return "member/login"; }
 }

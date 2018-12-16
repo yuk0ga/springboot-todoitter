@@ -38,20 +38,5 @@
     </form>
 </div>
 
-<br>
-
-<div class="container panel-wrapper">
-    <div class="panel panel-default" th:each="category:${categories}">
-        <div class="panel-heading">
-            <h5 th:text="${category.name}"></h5>
-        </div>
-        <div class="panel-body">
-            <div class="list-group" th:each="todo:${category.todos}">
-                <a class="list-group-item" th:text="${todo.content}"></a>
-            </div>
-        </div>
-    </div>
-</div>
-
 </body>
 </html>

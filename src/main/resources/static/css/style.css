@@ -27,16 +27,16 @@
     margin: 0 auto;
 }
 
+.form-signup-heading {
+    margin-top: 0;
+}
+
 .form-signup-control {
     position: relative;
     box-sizing: border-box;
     height: auto !important;
     padding: 10px !important;
     font-size: 16px !important
-}
-
-.form-signup-heading {
-    margin-top: 0;
 }
 
 .btn-signup {

@@ -1,3 +1,17 @@
+
+.wrapper {
+    max-width: 600px;
+}
+
+.wrapper-item {
+    width: 100%;
+}
+
+.form-inline .form-control {
+    width: auto !important;
+    display: inline !important;
+}
+
 .deleteBtn, .top-menu {
     float: right;
 }

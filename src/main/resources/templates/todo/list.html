@@ -37,7 +37,7 @@
     <div class="input-todos wrapper-item">
         <form method="post" class="form-inline" th:action="@{'/categories/' + ${category_id} + '/todos'}" th:object="${todo}">
             <input type="text" class="form-control" placeholder="Todo" th:field="*{content}" autocomplete="off"/>
-            <input type="datetime-local" class="form-control" th:field="*{dueDate}"/>
+            <input type="datetime-local" class="form-control" th:field="*{dueDate}" value="2000-07-01T12:00"/>
             <button type="submit" class="btn btn-primary">Add</button>
             <ul th:if="${#fields.hasErrors('*')}">
                 <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>

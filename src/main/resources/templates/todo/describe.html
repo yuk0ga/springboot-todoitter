@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
+    <title>Todo | Todoitter</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" media="all" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" /></head>
+<body>
+
+<div class="wrapper container-fluid">
+    <div class="top-bar wrapper-item">
+        <h2 id="todoitter-title"><a th:href="@{/}">Todoitter</a></h2>
+        <ul class="top-menu">
+            <li id="welcome-msg">Welcome, <span th:text="${member.username}">Member!</span></li>
+            <li><a id="logout-btn" th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="todos wrapper-item">
+        <div class="wrapper-item">
+            <a th:href="@{/categories/{category_id}/todos/(category_id=${category.id})}"><button class="btn btn-default backBtn glyphicon glyphicon-chevron-left"></button></a>
+        </div>
+        <h5 th:text="'Details of '+${todo.content}"></h5>
+        <ul>
+            <li><h5 th:text="'Todo: '+${todo.content}"></h5></li>
+            <li><h5 th:text="'Due date: '+${todo.dueDate}"></h5></li>
+            <li><h5 th:text="'Category: '+${todo.category.name}"></h5></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

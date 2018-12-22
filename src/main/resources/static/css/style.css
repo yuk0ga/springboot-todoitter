@@ -29,6 +29,17 @@
     margin: 20px auto;
 }
 
+ul.list-group li.list-group-item:hover {
+    background-color: #eee;
+}
+
+li.list-group-item a {
+    text-decoration: none;
+    color: #000;
+}
+
+/*Auth*/
+
 .body-signup {
     padding-top: 40px;
     padding-bottom: 40px;

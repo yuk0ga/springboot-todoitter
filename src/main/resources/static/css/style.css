@@ -20,6 +20,10 @@
     display: inline !important;
 }
 
+#todoitter-title a {
+    text-decoration: none;
+}
+
 .top-menu > li {
     display: inline;
     text-decoration: none;
@@ -36,6 +40,10 @@ ul.list-group li.list-group-item:hover {
 li.list-group-item a {
     text-decoration: none;
     color: #000;
+}
+
+.deleteBtn a:hover {
+    color: #cb0200;
 }
 
 /*Auth*/

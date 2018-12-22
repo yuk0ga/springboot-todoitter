@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
     <title>Categories | Todoitter</title>
     <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
-    <link rel="stylesheet" media="all" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" /></head>
+    <link rel="stylesheet" media="all" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+    <!--<script type="text/javascript" th:src="@{/js/main.js}"></script>-->
+</head>
 <body>
 
 <div class="wrapper container-fluid">
@@ -19,8 +21,8 @@
 
     <div class="categories wrapper-item">
         <ul class="list-group">
-            <li class="list-group-item" th:each="category : ${categories}">
-                <a th:href="@{'/categories/' + ${category.id} + '/todos'}" th:text="${category.name}"></a>
+            <li class="list-group-item" th:each="category : ${categories}" th:onclick="'window.location.href = \'' + @{'/categories/' + ${category.id} + '/todos'} + '\''">
+                <span th:text="${category.name}"></span>
                 <span class="deleteBtn"><a class="glyphicon glyphicon-remove" th:href="@{/categories/{id}/delete(id=${category.id},_method=delete)}"></a></span>
             </li>
         </ul>

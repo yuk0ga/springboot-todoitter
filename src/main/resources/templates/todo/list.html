@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
     <title>Todo | Todoitter</title>
     <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
-    <link rel="stylesheet" media="all" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" /></head>
+    <link rel="stylesheet" media="all" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+    <!--<script type="text/javascript" th:src="@{/js/main.js}"></script>-->
+</head>
 <body>
 
 <div class="wrapper container-fluid">
@@ -23,8 +25,8 @@
         </div>
         <h5 th:text="'Category: '+${category.name}"></h5>
         <ul class="list-group">
-            <li class="list-group-item" th:each="todo : ${todos}">
-                <a th:href="@{/categories/{category_id}/todos/describe/{id}(category_id=${todo.category.getId()}, id=${todo.id})}" th:text="${todo.content}"></a>
+            <li class="list-group-item" th:each="todo : ${todos}" th:onclick="'window.location.href = \'' + @{/categories/{category_id}/todos/describe/{id}(category_id=${todo.category.getId()}, id=${todo.id})} + '\''">
+                <span th:text="${todo.content}"></span>
                 <span class="deleteBtn">
                     <a class="glyphicon glyphicon-remove" th:href="@{/categories/{category_id}/todos/{id}(category_id=${todo.category.getId()}, id=${todo.id},_method=delete)}"></a>
                 </span>

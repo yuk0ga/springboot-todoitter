@@ -20,10 +20,12 @@
     </div>
 
     <div class="todos wrapper-item">
-        <div class="wrapper-item">
-            <a th:href="@{/categories/{category_id}/todos/(category_id=${category.id})}"><button class="btn btn-default backBtn glyphicon glyphicon-chevron-left"></button></a>
+        <div class="body-header">
+            <a class="body-header-content" th:href="@{/categories/{category_id}/todos/(category_id=${category.id})}">
+                <h4 class="glyphicon glyphicon-circle-arrow-left"></h4>
+            </a>
+            <h4 class="body-header-content" th:text="${category.name}+': '+${todo.content}"></h4>
         </div>
-        <h5 th:text="'Details of '+${todo.content}"></h5>
         <ul>
             <li><h5 th:text="'Todo: '+${todo.content}"></h5></li>
             <li><h5 th:text="'Due date: '+${todo.dueDate}"></h5></li>

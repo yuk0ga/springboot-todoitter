@@ -20,6 +20,9 @@
     </div>
 
     <div class="categories wrapper-item">
+        <div class="body-header">
+            <h4 class="body-header-content" th:text="Categories"></h4>
+        </div>
         <ul class="list-group">
             <li class="list-group-item" th:each="category : ${categories}" th:onclick="'window.location.href = \'' + @{'/categories/' + ${category.id} + '/todos'} + '\''">
                 <span th:text="${category.name}"></span>

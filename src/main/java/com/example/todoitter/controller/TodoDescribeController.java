@@ -43,6 +43,8 @@ public class TodoDescribeController {
             @PathVariable int id,
             Model model) {
         todo.setId(id);
+        todo.setCategory(categoryService.findOneById(category_id));
+        todo.setMember(member);
         todoService.save(todo);
         return "redirect:/categories/" + category_id + "/todos/describe/" + id;
     }

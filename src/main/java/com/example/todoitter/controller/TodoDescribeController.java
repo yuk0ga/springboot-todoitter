@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/categories/{category_id}/todos/describe/{id}")
@@ -22,7 +21,7 @@ public class TodoDescribeController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping
+    @GetMapping
     public String getTodo(
             @ModelAttribute Todo todo,
             @AuthenticationPrincipal Member member,
@@ -33,6 +32,19 @@ public class TodoDescribeController {
         model.addAttribute("category", categoryService.findOneById(category_id));
         model.addAttribute("member", member);
         return "todo/describe";
+    }
+
+    @PostMapping("/update")
+    public String updateTodo(
+            @ModelAttribute Todo todo,
+            @AuthenticationPrincipal Member member,
+            BindingResult result,
+            @PathVariable int category_id,
+            @PathVariable int id,
+            Model model) {
+        todo.setId(id);
+        todoService.save(todo);
+        return "redirect:/categories/" + category_id + "/todos/describe/" + id;
     }
 
 }

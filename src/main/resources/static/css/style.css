@@ -72,6 +72,11 @@ li.list-group-item a {
     color: #cb0200;
 }
 
+.editBtn {
+    top: 7px;
+    position: relative;
+}
+
 /*Auth*/
 
 .body-signup {

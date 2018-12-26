@@ -6,6 +6,8 @@
     <title>Todo | Todoitter</title>
     <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
     <link rel="stylesheet" media="all" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
     <!--<script type="text/javascript" th:src="@{/js/main.js}"></script>-->
 </head>
 <body>
@@ -25,13 +27,42 @@
                 <h4 class="glyphicon glyphicon-circle-arrow-left"></h4>
             </a>
             <h4 class="body-header-content" th:text="${category.name}+': '+${todo.content}"></h4>
+            <button class="body-header-content btn btn-default editBtn pull-right" type="button" data-toggle="modal" data-target="#editModal">Edit</button>
         </div>
         <ul>
             <li><h5 th:text="'Todo: '+${todo.content}"></h5></li>
             <li><h5 th:text="'Due date: '+${todo.dueDate}"></h5></li>
-            <li><h5 th:text="'Category: '+${todo.category.name}"></h5></li>
+            <li><h5 th:text="'Category: '+${category.name}"></h5></li>
         </ul>
     </div>
 </div>
+
+<!--modal-->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" th:text="'Edit '+${todo.content}"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form th:method="post" class="form-inline" th:action="@{'/categories/' + ${category.id} + '/todos/describe/' + ${todo.id} + '/update'}"  th:object="${todo}">
+                    <input type="text" class="form-control" th:value="${todo.content}" th:field="*{content}" autocomplete="off"/>
+                    <input type="datetime-local" class="form-control" th:value="${todo.dueDate}" th:field="*{dueDate}"/>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <ul th:if="${#fields.hasErrors('*')}">
+                        <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+                    </ul>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

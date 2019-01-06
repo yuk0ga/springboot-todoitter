@@ -113,3 +113,8 @@ li.list-group-item a {
     text-align: center;
     margin: 7px;
 }
+
+/* Modal */
+.modal-title {
+    display: inline;
+}

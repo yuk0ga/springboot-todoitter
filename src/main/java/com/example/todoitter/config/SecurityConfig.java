@@ -23,16 +23,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/css/**", "/js/**", "/webjars/**", "/signup", "/login", "/").permitAll()
-                .anyRequest()
-                .authenticated()
+        http
+            .authorizeRequests()
+                .antMatchers("/css/**", "/js/**", "/webjars/**", "/signup", "/login", "/").permitAll() // allows access to these endpoints w/o auth
+                .anyRequest().authenticated() // every request requires the user to be authenticated
                 .and()
-                .formLogin()
+            .formLogin()
                 .loginPage("/login")
-                .permitAll()
+                .permitAll() // allows access to /login without auth
                 .and()
-                .logout()
+            .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
     }
 }
